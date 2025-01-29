@@ -22,3 +22,7 @@ class LeadEntry(BaseModel):
 class LeadGenSchema(BaseModel):
     object: str
     entry: List[LeadEntry]
+
+'''
+{'object': 'page', 'entry': [{'id': '266732166692625', 'time': 1738175166, 'changes': [{'field': 'leadgen', 'value': {'adgroup_id': None, 'ad_id': None, 'created_time': 1738175164, 'leadgen_id': '953494233552595', 'page_id': '266732166692625', 'form_id': '959174276185865'}}]}]}
+'''
