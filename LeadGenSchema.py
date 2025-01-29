@@ -1,14 +1,24 @@
 from pydantic import BaseModel
+from typing import List, Optional
 
 
-class ValueSchema(BaseModel):
-    ad_id: str
-    form_id: str
-    leadgen_id: str
+class LeadValue(BaseModel):
+    adgroup_id: Optional[str] = None
+    ad_id: Optional[str] = None
     created_time: int
+    leadgen_id: str
     page_id: str
-    adgroup_id: str
+    form_id: str
+
+class LeadChange(BaseModel):
+    field: str
+    value: LeadValue
+
+class LeadEntry(BaseModel):
+    id: str
+    time: int
+    changes: List[LeadChange]
 
 class LeadGenSchema(BaseModel):
-    field: str
-    value: ValueSchema
+    object: str
+    entry: List[LeadEntry]
