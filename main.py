@@ -2,6 +2,8 @@ import os
 
 from fastapi import FastAPI, Query
 
+from LeadGenSchema import LeadGenSchema
+
 app = FastAPI()
 chave = os.getenv("CHAVE_SECRETA")
 
@@ -15,6 +17,14 @@ async def root(
     if hub_verify_token == chave:
         return hub_challenge
     return None
+
+
+@app.post("/meta_webhook")
+async def root(
+    request: LeadGenSchema
+):
+    print(request.model_dump())
+    return {"status": "success"}
 
 
 @app.get("/hello/{name}")
